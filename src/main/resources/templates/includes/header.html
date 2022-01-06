@@ -1,0 +1,65 @@
+<div th:fragment="header" id="menuGrand">
+  <ul>
+    <li>
+      <a th:href="@{/home}"><img id="logo" th:src="@{~/images/tsor_corp.png}" alt="logo"/></a>
+    </li>
+
+    <li>
+      <a th:href="@{/actualite}">Actualité</a>
+    </li>
+
+      <th-block data-sec-authorize="!isAnonymous()">
+        <li>
+          <a th:href="@{/admin}">Liste utilisateurs</a>
+        </li>
+
+        <li>
+          <a th:href="@{~/pm}">Messagerie</a>
+        </li>
+
+        <li><a th:href="@{/aide}">Aide</a></li>
+
+        <li><a href="/vueJS/index.html">VueJS</a></li>
+
+        <li>
+          <div class="avatar">
+            <img id="btn" th:src="@{~/images/avatar/{picture} (picture = ${user_profile.profile_picture})}" alt="Photo de profil"/>
+          </div>
+          <div class="box arrow" id="nav_profile">
+            <a th:href="@{~/user/profile/{user} (user = ${user_profile.username})}">Profil</a>
+            <a th:href="@{/logout}">Déconnexion</a>
+          </div>
+        </li>
+    </th-block>
+  </ul>
+</div>
+
+<div th:fragment="header" id="menuPetit">
+  <div id="menuPetitOuverture"></div>
+  <a th:href="@{/home}"><img id="logo" th:src="@{~/images/tsor_corp.png}" alt="logo"/></a>
+
+  <th-block data-sec-authorize="!isAnonymous()">
+    <div class="avatar">
+      <img id="btn" th:src="@{~/images/avatar/{picture} (picture = ${user_profile.profile_picture})}" alt="Photo de profil"/>
+    </div>
+
+    <div class="box arrow" id="nav_profile">
+      <a th:href="@{~/user/profile/{user} (user = ${user_profile.username})}">Profil</a>
+      <a th:href="@{/logout}">Déconnexion</a>
+    </div>
+  </th-block>
+
+  <ul>
+    <li>
+      <a th:href="@{/actualite}">Actualité</a>
+    </li>
+    <li><a th:href="@{/aide}">Aide</a></li>
+
+    <th-block data-sec-authorize="hasRole('ADMIN')">
+      <li>
+        <a th:href="@{/admin}">Administration</a>
+      </li>
+    </th-block>
+  </ul>
+
+</div>

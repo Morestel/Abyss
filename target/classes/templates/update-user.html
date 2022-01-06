@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../../css/style.css">
+    <link rel="stylesheet" href="../../../css/stylePanel.css">
+    <title>TSOR Corp. Profile-modification</title>
+</head>
+
+<body onload="chargementFini();">
+    <div th:replace="includes/header :: header"></div>
+
+    <div class="main">
+        <h1>Profile modification</h1>
+
+        <div id="formBlock">
+            <form method="POST" enctype="multipart/form-data"
+                th:action="@{/user/{user}/upload (user = ${user_profile.username})}" th:object="${form}">
+                <input name="file" type="file" th:field="*{file}" />
+                <input type="submit" value="Envoyer" />
+            </form>
+
+            <form method="POST" th:action="@{/user/profile/{user}/update (user = ${user_profile.username})}"
+                th:object="${u}" onsubmit="return validation(this)">
+                <input type="email" name="email" class="email" placeholder="Changer email" pattern=".+@.+\..+"
+                    th:field="*{email}">
+                <input type="password" name="old_password" class="password" placeholder="Ancien mot de passe"
+                    minlength="6" maxlength="18" th:field="*{temporary_password}">
+                <input type="password" name="password" class="password" value="" placeholder="Nouveau mot de passe"
+                    minlength="6" maxlength="18" th:field="*{encodedPassword}">
+                <input type="password" name="repassword" class="repassword" value=""
+                    placeholder="Confirmer votre mot de passe">
+                <br>
+                <input type="submit" name="submit" class="button" value="VALIDER CHANGEMENT">
+            </form>
+        </div>
+        <div th:replace="includes/footer :: footerx"></div>
+</body>
+<script src="../../../vue.global.js"></script>
+<script src="../../../thymeleafJS/scriptGeneral.js"></script>
+
+</html>

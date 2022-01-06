@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, height=device-height, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0"
+    />
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/stylePanel.css" />
+    <title>TSOR Corp. Registration</title>
+  </head>
+  <body onload="chargementFini();">
+    <div class="main-content">
+      <div class="menuLogin">
+        <img id="welcomLogo" src="./images/tsor.png" alt="welcomLogo" />
+        <h1>Calendarium</h1>
+        <p><a href="login">J'ai déjà un compte</a></p>
+      </div>
+      <div class="welcomBlockTwo3">
+        <div class="effectWelcom1">
+          <span class="welcomPart">
+            <h2>REJOIGNER NOUS</h2>
+          </span>
+          <span class="welcomPart">
+            <div id="formBlock">
+              <h1>Inscription</h1>
+              <form
+                method="POST"
+                th:action="@{/user/new}"
+                th:object="${u}"
+                onsubmit="return validation(this)"
+              >
+                <input
+                  type="text"
+                  name="username"
+                  class="username"
+                  placeholder="Nom d'utilisateur"
+                  pattern="\w*"
+                  th:field="*{username}"
+                  required
+                />
+                <input
+                  type="email"
+                  name="email"
+                  class="email"
+                  placeholder="E-mail"
+                  pattern=".+@.+\..+"
+                  th:field="*{email}"
+                  required
+                />
+                <input
+                  type="password"
+                  name="password"
+                  id="password"
+                  placeholder="Mot de passe"
+                  minlength="6"
+                  maxlength="18"
+                  th:field="*{encodedPassword}"
+                  value=""
+                  required
+                />
+                <input
+                  type="password"
+                  name="repassword"
+                  id="repassword"
+                  value=""
+                  placeholder="Confirmer votre mot de passe"
+                  required
+                />
+                <br />
+                <input
+                  type="submit"
+                  name="submit"
+                  class="button"
+                  value="TERMINER L'INSCRIPTION"
+                />
+              </form>
+            </div>
+          </span>
+        </div>
+      </div>
+    </div>
+    <div th:replace="includes/footer :: footerFirst"></div>
+    <script src="thymeleafJS/scriptFirst.js"></script>
+  </body>
+</html>

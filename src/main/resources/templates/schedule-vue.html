@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../../../css/style.css" />
+    <link rel="stylesheet" href="../../../css/stylePanel.css" />
+    <title>TSOR Corp. Schedule</title>
+  </head>
+
+  <body onload="chargementFini();">
+    <div th:replace="includes/header :: header"></div>
+    <div class="blockVideoHome">
+      <video autoplay loop playsinline muted id="videoHome">
+        <source src="../videos/Knight.mp4" type="video/mp4" />
+      </video>
+    </div>
+    <div class="main" id="mainSchedule">
+      <h2>[[ ${schedule.nameSchedule} ]]</h2>
+
+      <div class="blockListUser">
+        <div class="blockListUserEffect">
+          <h3>
+            Liste des utilisateurs de l'agenda [[ ${schedule.nameSchedule} ]] :
+          </h3>
+          <ul class="listUser">
+            <li th:each="user : ${listUser}">
+              - [[ ${user.username} ]]
+              <th:block th:if="${user.username != schedule.owner}"> 
+                <a th:href="@{/schedule/{idSchedule}/delete/{username} (idSchedule = ${schedule.id}, username = ${user.username})}"><button>Exclure</button></a>
+              </th:block>
+            </li> 
+          </ul>
+
+          <div class="scheduleBox">
+            <form
+              method="POST"
+              th:action="@{addUser/{id_schedule} (id_schedule = ${schedule.id})}"
+            >
+              <input
+                type="text"
+                name="nameUser"
+                placeholder="Utilisateur à ajouter"
+              />
+              <input type="submit" name="submit" value="AJOUTER" />
+            </form>
+          </div>
+        </div>
+      </div>
+
+      <div id="menuPetitOuverture"></div>
+
+      <div id="schedule-vue"></div>
+
+      <div id="chat">
+        <table>
+          <thead>
+            <tr>
+              <th v-on:click="openMessenger">
+                <svg v-show="messageBool=='0'" width="100px" height="90px">
+                  <line
+                    x1="20"
+                    y1="40"
+                    x2="80"
+                    y2="40"
+                    stroke="red"
+                    stroke-width="5"
+                  />
+                  <line
+                    x1="20"
+                    y1="60"
+                    x2="80"
+                    y2="60"
+                    stroke="red"
+                    stroke-width="5"
+                  />
+                </svg>
+                <svg v-show="messageBool=='1'" width="100px" height="90px">
+                  <line
+                    x1="30"
+                    y1="30"
+                    x2="70"
+                    y2="70"
+                    stroke="red"
+                    stroke-width="5"
+                  />
+                  <line
+                    x1="70"
+                    y1="30"
+                    x2="30"
+                    y2="70"
+                    stroke="red"
+                    stroke-width="5"
+                  />
+                </svg>
+              </th>
+
+              <th colspan="2">CHAT</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td colspan="3" style="text-align: center">
+                <input
+                  type="text"
+                  v-model="message"
+                  placeholder="Ajouter un message"
+                />
+                <input
+                  type="submit"
+                  value="ENVOYER"
+                  @click.prevent="addMessage"
+                />
+              </td>
+            </tr>
+            <tr v-for="m in messages.slice().reverse()">
+              <td style="text-align: center">{{m.sender}} :</td>
+              <td>{{m.message}}</td>
+              <td style="text-align: center">
+                <button @click="supprimer(m)" name="button">Supprimer</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="addItem">
+        <div class="addItemEffect">
+          <h3>Ajouter un élément à l'emploi du temps :</h3>
+
+          <div class="scheduleBox">
+            <form
+              method="POST"
+              th:action="@{addItem/{id_schedule} (id_schedule = ${schedule.id})}"
+            >
+              <input
+                type="text"
+                name="nameItem"
+                placeholder="Nom de l'item"
+                required
+              />
+              <input type="date" name="day" placeholder="Jour" required />
+              <input type="time" name="hourBeginItem" required />
+              <input type="time" name="hourEndItem" required />
+              <input type="text" name="placeItem" placeholder="Lieu" required />
+              <input
+                type="text"
+                name="descriptionItem"
+                placeholder="Description"
+                required
+              />
+              <input type="submit" name="submit" value="AJOUTER" />
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div th:replace="includes/footer :: footerx"></div>
+  </body>
+
+  <script src="../../../vue.global.js"></script>
+  <script src="../../../thymeleafJS/scriptSchedule.js"></script>
+  <script src="../../../thymeleafJS/scriptGeneral.js"></script>
+  <script src="../../../thymeleafJS/scriptChat.js"></script>
+</html>

@@ -1,0 +1,55 @@
+.pmTextArea{
+    width: 400px;
+    height: 200px;
+    max-width: 1000px;
+}
+
+.box-private-message{
+    width: 80%;
+    min-height: 200px;
+    border-radius: 6px;
+    border: 1px solid black;
+    margin: 50px auto 50px auto;
+    padding: 15px;
+    background: rgb(235,237,249);
+    background: radial-gradient(circle, rgba(235,237,249,1) 0%, rgba(254,254,254,1) 100%);
+}
+
+.messageReceiver{
+    border: 1px solid gray;
+    margin-top: 10px;
+    padding: 5px;
+    border-radius: 6px;
+}
+
+.information-pm{
+    width: 10%;
+    text-align: center;
+    position: relative;
+}
+.avatar-pm{
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+}
+
+.date-pm{
+    font-size: 0.4em;
+}
+
+.username-pm{
+    position: relative;
+    top: -14px;
+    left: 5px;
+}
+
+.message-box-pm{
+    position: relative;
+}
+
+.message-pm{
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size: 0.7em;
+    margin: 5px;
+    padding: 5px;
+}

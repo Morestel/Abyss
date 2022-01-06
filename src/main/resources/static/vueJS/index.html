@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, height=device-height, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0"
+    />
+    <link rel="stylesheet" href="../css/style.css" />
+    <link rel="stylesheet" href="../css/stylePanel.css" />
+    <link rel="stylesheet" href="../css/privateMessage.css" />
+    <script src="https://unpkg.com/vue@3"></script>
+    <script src="https://unpkg.com/vue-router@4"></script>
+
+    <title>TSOR Corp. Home</title>
+  </head>
+  <body>
+    <div id="blockVideojs">
+      <video
+        autoplay
+        loop
+        playsinline
+        muted
+        id="videojs"
+        src="../videos/clock.mp4"
+      ></video>
+    </div>
+    <div id="app">
+      <navigation></navigation>
+      <router-view></router-view>
+      <foot></foot>
+    </div>
+    <script type="module" src="../vueJS/routeur.js"></script>
+  </body>
+  <script src="../thymeleafJS/scriptFirst.js"></script>
+</html>

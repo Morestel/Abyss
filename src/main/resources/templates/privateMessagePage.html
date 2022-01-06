@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TSOR Corp - Messages privés</title>
+    <link rel="stylesheet" href="../css/style.css" />
+    <link rel="stylesheet" href="../css/stylePanel.css" />
+    <link rel="stylesheet" href="../css/privateMessage.css" />
+  </head>
+  <body onload="chargementFini();">
+    <div th:replace="includes/header :: header"></div>
+    <div class="blockVideoHome">
+      <video autoplay loop playsinline muted id="videoHome">
+        <source src="../videos/msg.mp4" type="video/mp4" />
+      </video>
+    </div>
+    <div class="main">
+
+        <div class="profilModifPicture">
+            <div class="profile-picture">
+                <img th:src="@{~/images/avatar/{picture} (picture = ${user_profile.profile_picture})}" alt="Photo de profil" />
+                <img th:src="@{~/images/avatar/{picture} (picture = ${otherUser.profile_picture})}" alt="Photo de profil" />
+            </div>
+            <h1>[[ ${user_profile.username} ]] / [[ ${otherUser.username} ]]</h1>
+            <form th:action="@{/pm/{otherUser}/addMessage (otherUser = ${otherUser.username})}" method="POST">
+
+                <textarea class="pmTextArea" name="newMessage" placeholder="Votre message ..."></textarea><br>
+                <input type="submit" id="submit_button" name="submit" value="Envoyer" />
+            
+            </form>
+            
+        </div>
+        <div class="box-private-message">
+          <ul>
+              
+              <li th:each="message : ${listPrivateMessage}">
+                  <div class="messageReceiver">
+                      <div class="information-pm">
+                          <img th:if="${message.sender.username == user_profile.username}" class="avatar-pm" th:src="@{~/images/avatar/{picture} (picture = ${user_profile.profile_picture})}" alt="Photo de profil" />
+                          <img  th:if="${message.sender.username != user_profile.username}" class="avatar-pm" th:src="@{~/images/avatar/{picture} (picture = ${otherUser.profile_picture})}" alt="Photo de profil" />
+                          <span class="username-pm"><a th:href="@{/user/profile/{username}(username=${message.sender.username})}">[[ ${message.sender.username} ]]</a></span> <br>
+                          <span class="date-pm">[[ ${message.datePm} ]]</span>
+                          <hr>
+                      </div>
+                      <div class="message-box-pm">
+                          <span class="message-pm">[[ ${message.message} ]]</span>
+                      </div>
+                  </div>  
+              </li>
+          </ul>
+      </div>
+
+    </div>
+
+    <!--
+<div class="box-private-message">
+                <ul>
+                    
+                    <li v-for="message in listMessages">
+                        <div class="messageReceiver">
+                            <div class="information-pm">
+                                <img v-if="message.sender == actualUser.username" class="avatar-pm" :src="profilePicUser" alt="Photo de profil" />
+                                <img v-else class="avatar-pm" :src="profilePicOther" alt="Photo de profil" />
+                                <span class="username-pm"><router-link :to="{ path: '/users/' + message.sender + '/profile'}">{{ message.sender }}</router-link></span> <br>
+                                <span class="date-pm">{{ message.date }}</span>
+                                <hr>
+                            </div>
+                            <div class="message-box-pm">
+                                <span class="message-pm">{{ message.message }}</span>
+                            </div>
+                        </div>  
+                    </li>
+                </ul>
+            </div>
+
+    -->
+    <div th:replace="includes/footer :: footerx"></div>
+
+  </body>
+  <script src="thymeleafJS/scriptGeneral.js"></script>
+</html>

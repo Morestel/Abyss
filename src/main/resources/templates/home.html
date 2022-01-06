@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, height=device-height, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0"
+    />
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/stylePanel.css" />
+    <title>TSOR Corp. Home</title>
+  </head>
+
+  <body onload="chargementFini();">
+    <div th:replace="includes/header :: header"></div>
+    <div class="blockVideoHome">
+      <video autoplay loop playsinline muted id="videoHome">
+        <source src="../videos/clock.mp4" type="video/mp4" />
+      </video>
+    </div>
+    <div class="main">
+      <h2>Mes agendas :</h2>
+      <div class="sendNewSchedule">
+        <form th:action="@{/addSchedule}" method="POST">
+          <input
+            type="text"
+            name="nameSchedule"
+            placeholder="Nom agenda à ajouter"
+          />
+          <input
+            type="submit"
+            name="submit"
+            style="width: 100px"
+            value="AJOUTER"
+          />
+        </form>
+      </div>
+      <div class="tableHome">
+        <table class="tableUser">
+          <thead>
+            <tr>
+              <th>Agenda admin</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr data-th-each="schedule : ${listSchedule}">
+              <td th:if="${user_profile.isOwner(schedule)}">
+                <a th:href="@{/schedule/{id} (id = ${schedule.id})}">[[ ${schedule.nameSchedule} ]]</a>
+                <a th:href="@{/schedule/{id}/delete (id = ${schedule.id})}"><img src="/images/delete.png" alt="Delete" style="height: 20px;"/></a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+        <table class="tableUser">
+          <thead>
+            <tr>
+              <th>Agenda invité</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr data-th-each="schedule : ${listSchedule}">
+              <td th:if="${not user_profile.isOwner(schedule)}">
+                <a th:href="@{/schedule/{id} (id = ${schedule.id})}"
+                  >[[ ${schedule.nameSchedule} ]]</a
+                >
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div th:replace="includes/footer :: footerx"></div>
+  </body>
+  <script src="vue.global.js"></script>
+  <script src="thymeleafJS/scriptGeneral.js"></script>
+</html>

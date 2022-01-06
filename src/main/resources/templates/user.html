@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../../../css/style.css" />
+    <link rel="stylesheet" href="../../../css/stylePanel.css" />
+    <title>TSOR Corp. - [[ ${user_profile.username} ]]</title>
+  </head>
+
+  <body onload="chargementFini();">
+    <div th:replace="includes/header :: header"></div>
+    <div class="main">
+      <div class="profilModifPicture">
+        <div class="profile-picture">
+          <img
+            th:src="@{~/images/avatar/{user} (user = ${user.profile_picture})}"
+            alt="Photo de profil"
+          />
+          
+        </div>
+        <div class="modif-profile">
+          <th:block th:if="${user_profile.username} != ${user.username}">
+            <a th:href="@{/pm/{otherUser} (otherUser = ${user.username})}"><button>Envoyer un message</button></a>
+          </th:block>
+          <th:block th:if="${user_profile.username} == ${user.username}">
+            <a
+              th:href="@{/user/profile/{user}/update (user = ${user_profile.username})}"
+              ><button type="button">Modifier profil</button></a
+            >
+          </th:block>
+        </div>
+      </div>
+      <div class="tableHome">
+        <table class="tableUser">
+          <thead>
+            <tr>
+              <th colspan="2">Profil</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Nom</td>
+              <td>[[ ${user.username} ]]</td>
+            </tr>
+            <tr>
+              <td>Email</td>
+              <td>[[ ${user.email} ]]</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div th:replace="includes/footer :: footer"></div>
+  </body>
+  <script src="../../../vue.global.js"></script>
+  <script src="../../../thymeleafJS/scriptGeneral.js"></script>
+</html>

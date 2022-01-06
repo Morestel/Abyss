@@ -1,0 +1,45 @@
+<div th:fragment="footerx">
+    <footer id="footer">
+        <table>
+            <tr id="footerTete">
+                <th>Plan du site :</th>
+                <th></th>
+            </tr>
+            <tr id="liFooterTete">
+                <td>
+                    <a th:href="@{/home}">Accueil</a></br>
+                    <a th:href="@{/actualite}">Actualité</a></br>
+                    <a th:href="@{/aide}">Aide</a></br>
+                </td>
+                <td>
+                    <img id="logoFooter" th:src="@{~/images/tsor.png}" alt="logoFooter">
+                </td>
+            </tr>
+        </table>
+        </br></br>
+        <p style="text-align : center;font-size: 150%;color:black;">Copyright © 2021 TSOR Corp. Tous droits réservés.
+        </p>
+    </footer>
+</div>
+
+<div th:fragment="footerFirst">
+    <footer id="footer">
+        <table>
+            <tr id="footerTete">
+                <th>Qui sommes nous ?</th>
+                <th></th>
+            </tr>
+            <tr id="liFooterTete">
+                <td>
+                    <p>TSOR Corp.</p>
+                </td>
+                <td>
+                    <img id="logoFooter" th:src="@{~/images/tsor.png}" alt="logoFooter">
+                </td>
+            </tr>
+        </table>
+        </br></br>
+        <p style="text-align : center;font-size: 150%;color:black;">Copyright © 2021 TSOR Corp. Tous droits réservés.
+        </p>
+    </footer>
+</div>

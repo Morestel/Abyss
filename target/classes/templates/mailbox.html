@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TSOR Corp - Messages privés</title>
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/stylePanel.css" />
+  </head>
+  <body onload="chargementFini();">
+    <div th:replace="includes/header :: header"></div>
+    <div class="blockVideoHome">
+      <video autoplay loop playsinline muted id="videoHome">
+        <source src="../videos/msg.mp4" type="video/mp4" />
+      </video>
+    </div>
+    <div class="main">
+      <h1>Votre messagerie :</h1>
+      <ul>
+        <li th:each="conv : ${listPrivateMessage}">
+          <br />
+          <div
+            class="msgBubble sender"
+            th:if="${conv.sender.username != user_profile.username}"
+          >
+            <img
+              id="imgBubbleSender"
+              th:src="@{~/images/avatar/{user} (user = ${conv.sender.profile_picture})}"
+              alt="Photo de profil"
+            />
+            <a th:href="@{/pm/{username} (username = ${conv.sender.username})}">
+              [[ ${conv.sender.username} ]] &thinsp; &thinsp; &thinsp; &thinsp; [[
+              ${conv.message} ]]
+            </a>
+          </div>
+
+          <div
+            class="msgBubble receiver"
+            th:if="${conv.receiver.username != user_profile.username}"
+          >
+            <img
+              id="imgBubbleReceiver"
+              th:src="@{~/images/avatar/{user} (user = ${conv.receiver.profile_picture})}"
+              alt="Photo de profil"
+            />
+            <a th:href="@{/pm/{username} (username = ${conv.receiver.username})}">
+              [[ ${conv.receiver.username} ]] &thinsp; &thinsp; &thinsp; &thinsp;
+              &thinsp; &thinsp; &thinsp; [[ ${conv.message} ]]
+            </a>
+          </div>
+        </li>
+      </ul>
+    </div>
+
+    <div th:replace="includes/footer :: footerx"></div>
+  </body>
+
+  <script src="vue.global.js"></script>
+  <script src="thymeleafJS/scriptGeneral.js"></script>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, height=device-height, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0"
+    />
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/stylePanel.css" />
+    <title>TSOR Corp. news</title>
+  </head>
+
+  <body onload="chargementFini();">
+    <div th:replace="includes/header :: header"></div>
+    <div class="blockVideoHome">
+      <video autoplay loop playsinline muted id="videoHome">
+        <source src="../videos/actualityClock.mp4" type="video/mp4" />
+      </video>
+    </div>
+    <div class="main">
+      <h2>Actualité</h2>
+
+      <table class="tableAct">
+        <thead>
+          <tr>
+            <th>Nom</th>
+            <th>Heures de début</th>
+            <th>Heures de fin</th>
+            <th>Lieu</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr th:each="i : ${listItem}">
+            <td>[[ ${i.nameItem} ]]</td>
+            <td>[[ ${i.hourBeginItem} ]]</td>
+            <td>[[ ${i.hourEndItem} ]]</td>
+            <td>[[ ${i.roomItem} ]]</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div th:replace="includes/footer :: footerx"></div>
+  </body>
+  <script src="vue.global.js"></script>
+  <script src="thymeleafJS/scriptGeneral.js"></script>
+</html>

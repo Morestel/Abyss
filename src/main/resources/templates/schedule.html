@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../../../css/style.css" />
+    <link rel="stylesheet" href="../../../css/stylePanel.css" />
+    <title>TSOR Corp. Schedule</title>
+  </head>
+
+  <body onload="chargementFini();">
+    <div th:replace="includes/header :: header"></div>
+    <div class="blockVideoHome">
+      <video autoplay loop playsinline muted id="videoHome">
+        <source src="../videos/Knight.mp4" type="video/mp4" />
+      </video>
+    </div>
+    <div class="main" id="mainSchedule">
+      <h2>[[ ${schedule.nameSchedule} ]]</h2>
+      <div class="blockListUser">
+        <h3>
+          Liste des utilisateurs de l'agenda [[ ${schedule.nameSchedule} ]] :
+        </h3>
+
+        <ul class="listUser">
+          <li th:each="user : ${listUser}">- [[ ${user.username} ]]</li>
+        </ul>
+
+        <div class="scheduleBox">
+          <form
+            method="POST"
+            th:action="@{addUser/{id_schedule} (id_schedule = ${schedule.id})}"
+          >
+            <input
+              type="text"
+              name="nameUser"
+              placeholder="Utilisateur à ajouter"
+            />
+            <input type="submit" name="submit" value="AJOUTER" />
+          </form>
+        </div>
+      </div>
+
+      <div id="schedule"></div>
+      <div id="chat"></div>
+
+      <h3>Ajouter un élément à l'emploi du temps :</h3>
+
+      <div class="scheduleBox">
+        <form
+          method="POST"
+          th:action="@{addItem/{id_schedule} (id_schedule = ${schedule.id})}"
+        >
+          <input
+            type="text"
+            name="nameItem"
+            placeholder="Nom de l'item"
+            required
+          />
+          <input type="date" name="day" placeholder="Jour" required />
+          <input type="time" name="hourBeginItem" required />
+          <input type="time" name="hourEndItem" required />
+          <input
+            type="text"
+            name="placeItem"
+            placeholder="placeItem"
+            required
+          />
+          <input type="submit" name="submit" value="AJOUTER" />
+        </form>
+      </div>
+    </div>
+    <div th:replace="includes/footer :: footerx"></div>
+  </body>
+
+  <script src="../../../vue.global.js"></script>
+  <script src="../../../thymeleafJS/scriptSchedule.js"></script>
+  <script src="../../../thymeleafJS/scriptGeneral.js"></script>
+</html>

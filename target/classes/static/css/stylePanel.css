@@ -1,0 +1,69 @@
+:root {
+  /**************************general***************************/
+  --backgroundBody: rgba(246, 246, 246, 1);
+  --mainColor: rgba(246, 246, 246, 1);
+  --filterColor: rgba(20, 20, 20, 1);
+  --anchorColor: rgba(250, 250, 250, 1);
+
+  /*inscription/connection*/
+  --formBlockColor: rgba(150, 150, 150, 0.8);
+  --formBlockSubmitColor: rgba(46, 48, 146, 1);
+  --formBlockSubmitColorHover: rgba(46, 48, 196, 1);
+  --formBlockSubmitTextColor: rgba(255, 255, 255, 1);
+
+  /*Font : mavenProB/mavenProR+default*/
+  --titelFontH1: "mavenProB";
+  --titelFontH2: "mavenProB";
+  --titelFontH3: "mavenProB";
+  --allFont: "mavenProR";
+
+  /*Title color*/
+  --ColorH1: rgba(20, 20, 20, 1);
+  --ColorH2: rgba(20, 20, 20, 1);
+  --ColorH3: rgba(20, 20, 20, 1);
+
+  /*Menu color*/
+  --backgroundMenu: rgba(250, 250, 250, 1);
+  --fontMenu: rgba(20, 20, 20, 1);
+  --colorMenuHover: rgba(45, 46, 48, 1);
+
+  /*Footer*/
+  --backgroundFooter: rgba(250, 250, 250, 1);
+  --anchorColorFooter: rgba(20, 20, 20, 1);
+  --anchorColorFooterHover: rgba(45, 46, 48, 1);
+  --teteColorFooter: rgba(20, 20, 20, 1);
+  --teteBackgroundFooter: linear-gradient(
+    rgba(250, 250, 250, 1),
+    rgba(173, 173, 173, 1)
+  );
+
+  /**************************home**************************/
+  --colorSendNewSchedule: rgb(200, 200, 200);
+  --backgroundSendNewSchedule: rgba(45, 46, 48, 1);
+  --backgroundTableUser: rgb(230, 230, 230);
+  --backgroundTableUserHover: rgba(249, 181, 73, 0.5);
+  --colorTableUser: rgba(33, 108, 57, 1);
+  --backgroundTeteTableUser: rgba(45, 46, 48, 1);
+  --colorTeteTableUser: rgb(250, 250, 250);
+
+  /**************************Actuality**************************/
+  --backgroundTableActuality: #fbfbfd;
+  --backgroundTableActualityHover: rgba(0, 0, 0, 0.5);
+  --backgroundTeteTableActuality: rgba(20, 20, 20, 0.8);
+  --colorTeteTableActuality: rgb(239, 239, 239);
+
+  /**************************Schedule**************************/
+  --backgroundSchedule: rgb(32, 33, 36);
+  --backgroundHeurDay: rgba(45, 46, 48, 1);
+  --colorHeurDay: rgba(250, 250, 250, 1);
+  --backgroundHeurDayHover: rgba(249, 181, 73, 0.5);
+
+  --backgroundItemss: rgba(216, 27, 96, 0.8);
+  --colorItemss: rgba(250, 250, 250, 1);
+  --backgroundItemssHover: rgba(216, 27, 96, 0.4);
+
+  /**************************Chat**************************/
+  --colorTeteChat: rgba(242, 244, 247, 1);
+  --backgroundTeteChat: rgba(45, 46, 48, 1);
+  --backgroundChat: rgba(200, 200, 200, 0.9);
+}

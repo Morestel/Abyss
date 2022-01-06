@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, height=device-height, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0"
+    />
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/stylePanel.css" />
+    <title>TSOR Corp. Connection</title>
+  </head>
+  <body onload="chargementFini();">
+    <div class="main-content">
+      <div class="menuLogin">
+        <img id="welcomLogo" src="./images/tsor.png" alt="welcomLogo" />
+        <h1>Calendarium</h1>
+        <p>
+          <a href="#formBlock">Connectez-vous - </a
+          ><a href="inscription">Créer un compte</a>
+        </p>
+      </div>
+      <div class="welcomBlockOne">
+        <span class="welcomPart">
+          <img
+            id="fistWallPaper"
+            src="./images/welcomCalendarium.png"
+            alt="welcomCalendarium"
+          />
+        </span>
+        <span class="welcomPart">
+          <h2>Calendarium</h2>
+          <p>
+            Des agendas intégrés en ligne, conçus pour le travail en équipe.
+            Consacrez plus de temps à l'action qu'à la planification en
+            utilisant des agendas partageables, qui fonctionnent sur tous vos
+            appareils, afin d'être toujours informé de la suite des événements.
+          </p>
+        </span>
+      </div>
+      <div class="welcomBlockTwo1">
+        <div class="effectWelcom1">
+          <span class="welcomPart">
+            <h2>Planification intelligente</h2>
+            <p>
+              - Planifiez rapidement des événements.<br />- Invitez des collaborateurs
+              à rejoindre votre agenda pour qu'ils puissent consulter les
+              informations relatives à un événement.
+            </p>
+          </span>
+          <span class="welcomPart">
+            <img
+              id="fistWallPaper"
+              src="./images/welcomAdd.png"
+              alt="welcomAdd"
+            />
+          </span>
+        </div>
+      </div>
+      <div class="welcomBlockOne">
+        <span class="welcomPart">
+          <img
+            id="fistWallPaper"
+            src="./images/welcomResponsive.png"
+            alt="welcomResponsive"
+          />
+        </span>
+        <span class="welcomPart">
+          <h2>Accès depuis votre ordinateur portable ou appareil mobile</h2>
+          <p>
+            Affichez et modifiez votre planning à partir de votre ordinateur,
+            téléphone ou de votre tablette. Utilisez Calendarium sur tous vos
+            appareils. Full-responsive, il s'adaptera à tous vos besoins.
+          </p>
+        </span>
+      </div>
+      <div class="welcomBlockTwo2">
+        <div class="effectWelcom1">
+          <span class="welcomPart">
+            <h2>Créer à volonté</h2>
+            <p>
+              Vous pouvez créer des agendas accessibles à tous les utilisateurs
+              de votre organisation (ou à une partie d'entre eux). Par exemple,
+              vous pouvez vous servir de Calendarium pour créer un angenda
+              famille et un de travail que vous pouvez modifier si vous êtes le
+              créateur de celui-ci.
+            </p>
+          </span>
+          <span class="welcomPart">
+            <img
+              id="fistWallPaper"
+              src="./images/welcomCreat.png"
+              alt="welcomCreat"
+            />
+          </span>
+        </div>
+      </div>
+      <div id="formBlock">
+        <h1>Connexion</h1>
+        <form method="POST" th:action="@{/login}" name="login">
+          <input
+            type="text"
+            name="username"
+            class="username"
+            placeholder="Nom d'utilisateur"
+            required
+          />
+          <input
+            type="password"
+            name="password"
+            class="password"
+            placeholder="Mot de passe"
+            minlength="6"
+            maxlength="18"
+            required
+          />
+          <br />
+          <input
+            type="submit"
+            name="submit"
+            class="button"
+            value="SE CONNECTER"
+          />
+        </form>
+      </div>
+    </div>
+    <div th:replace="includes/footer :: footerFirst"></div>
+    <script src="thymeleafJS/scriptFirst.js"></script>
+  </body>
+</html>

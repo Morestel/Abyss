@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/stylePanel.css" />
+    <title>TSOR Corp - Liste utilisateurs</title>
+  </head>
+
+  <body onload="chargementFini();">
+    <div th:replace="includes/header :: header"></div>
+    <div class="blockVideoHome">
+      <video autoplay loop playsinline muted id="videoHome">
+        <source src="../videos/admin.mp4" type="video/mp4" />
+      </video>
+    </div>
+    <div class="main">
+      <h2>Liste d'utilisateurs</h2>
+
+      <table class="adminTable">
+        <thead>
+          <tr>
+            <th colspan="3">Pseudo</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr th:class="userList" th:each="u : ${userList}">
+            
+            <td style="width: 80%;text-align: center;color:white;">
+              <span>[[ ${u.username} ]]</span>
+            </td>
+            
+            <th:block th:if="${isAdmin}">
+              <td style="width: 10%;color:white;">
+                <a th:href="@{/user/{username}/delete(username=${u.username})}">Supprimer</a>
+              </td>
+            </th:block>
+            
+
+            <td style="width: 10%;color:white;">
+              <a th:href="@{/user/profile/{username}(username=${u.username})}">Profil</a>
+            </td>
+
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div th:replace="includes/footer :: footerx"></div>
+
+    <script src="vue.global.js"></script>
+    <script src="thymeleafJS/scriptGeneral.js"></script>
+  </body>
+</html>
